@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Band</title>
+    <title>Performer</title>
   </head>
   <body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>    <script>
@@ -12,8 +12,25 @@
       jQuery('#ytvideo').attr("src","http://www.youtube.com/embed/"+$(this).data('vid')+"?autoplay=1");
       });
     </script>
+  <a href="{{url_for('allBands', bands=bands)}}">Back to directory</a>
+  |
+  <a href="{{url_for('editBand', band_id = band.id)}}">Edit profile</a>
+  |
+  <a href="{{url_for('deleteBand', band_id = band.id)}}">Delete performer</a>
 
     <h1>{{band.name}}</h1>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-page" data-href="https://www.facebook.com/{{band.social}}/" data-tabs="timeline, events" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://www.facebook.com/{{band.social}}/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/{{band.social}}/">{{band.social}}</a></blockquote></div>
+<br>
     <iframe src="{{band.track}}" width="300" height="80"></iframe><br>
     <div id="ytvideo1" style="display:none;">
 
@@ -22,13 +39,8 @@
         <iframe width="342" height="200" id="ytvideo" frameborder="0" allowfullscreen></iframe>
     </div>
     <img class="aligncenter size-full" id="homevideo" alt="placeholder" src="{{band.pic}}" width="342" height="200" data-vid='{{band.video}}'/>
-    <!-- <img src="{{band.pic}}" width="220" height="342" id="homevideo" data-vidid="{{band.movie}}"> -->
-    <h3>{{band.bio}}</h3>
-    <h3>{{band.music}}</h3>
-    <p><a href="{{url_for('editBand', band_id = band.id)}}">Edit Band</a></p>
-    <p><a href="{{url_for('deleteBand', band_id = band.id)}}">Delete Band</a></p>
 
-
-<p><a href="{{url_for('allBands', bands=bands)}}">Back to all Bands</a></p>
+    <h2>Bio: </h2><h3>{{band.bio}}</h3>
+    <h2>Genre: </h2><h3>{{band.music}}</h3>
   </body>
 </html>

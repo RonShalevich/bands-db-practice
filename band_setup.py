@@ -18,6 +18,10 @@ class Band(Base):
     video = Column(String(250))
     pic = Column(String(250))
     track = Column(String(250))
+    email = Column(String(80))
+    website = Column(String(250))
+    social = Column(String(250))
+    home = Column(String(80))
 
     @property
     def serialize(self):
@@ -30,6 +34,10 @@ class Band(Base):
             'video': self.video,
             'pic': self.pic,
             'track': self.track,
+            'email': self.email,
+            'website': self.website,
+            'social': self.social,
+            'home': self.home
         }
 
 

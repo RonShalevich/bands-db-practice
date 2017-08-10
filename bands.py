@@ -1,4 +1,3 @@
-
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -13,6 +12,7 @@ Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
+
 
 @app.route('/')
 @app.route('/bands/')
@@ -36,13 +36,15 @@ def createBand():
         query = urlparse.parse_qs(url_data.query)
         video = query["v"][0]
 
-        url_music=request.form['track']
-        update_url=url_music.find('/track/')
-        track=url_music[:update_url] + '/embed' + url_music[update_url:]
+        url_music = request.form['track']
+        update_url = url_music.find('/track/')
+        track = url_music[:update_url] + '/embed' + url_music[update_url:]
 
         newBand = Band(name=request.form['name'], bio=request.form['bio'],
                        pic=request.form['pic'], music=request.form['music'],
-                       track=track, video=video)
+                       track=track, video=video, email=request.form['email'],
+                       website=request.form['website'], social=request.form['social'],
+                       home=request.form['home'])
 
         session.add(newBand)
         session.commit()
@@ -76,7 +78,8 @@ def editBand(band_id):
         session.commit()
         return redirect(url_for('showBand', band_id=band_id))
     else:
-        return render_template('editband.html', band_id=band_id, band=editedBand)
+        return render_template('editband.html', band_id=band_id,
+                               band=editedBand)
 
 
 @app.route('/band/<int:band_id>/delete', methods=['GET', 'POST'])
