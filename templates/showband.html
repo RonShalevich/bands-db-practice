@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Band</title>
+  </head>
+  <body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>    <script>
+      jQuery(document).on('click','#homevideo',function(e){
+      jQuery('#ytvideo1').show();
+      jQuery('#homevideo').hide();
+      jQuery('#ytvideo').attr("src","http://www.youtube.com/embed/"+$(this).data('vid')+"?autoplay=1");
+      });
+    </script>
+
+    <h1>{{band.name}}</h1>
+    <iframe src="{{band.track}}" width="300" height="80"></iframe><br>
+    <div id="ytvideo1" style="display:none;">
+
+
+
+        <iframe width="342" height="200" id="ytvideo" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <img class="aligncenter size-full" id="homevideo" alt="placeholder" src="{{band.pic}}" width="342" height="200" data-vid='{{band.video}}'/>
+    <!-- <img src="{{band.pic}}" width="220" height="342" id="homevideo" data-vidid="{{band.movie}}"> -->
+    <h3>{{band.bio}}</h3>
+    <h3>{{band.music}}</h3>
+    <p><a href="{{url_for('editBand', band_id = band.id)}}">Edit Band</a></p>
+    <p><a href="{{url_for('deleteBand', band_id = band.id)}}">Delete Band</a></p>
+
+
+<p><a href="{{url_for('allBands', bands=bands)}}">Back to all Bands</a></p>
+  </body>
+</html>

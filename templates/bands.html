@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>MY Bands</title>
+  </head>
+  <body>
+    <h1>My Bands</h1>
+    <a href='{{url_for('createBand')}}'> Create a New Band!!</a>
+    <ul>
+      {% for band in bands %}
+
+      <a href="{{url_for('showBand', band_id = band.id)}}">
+        <img class="aligncenter size-full" id="homevideo" alt="placeholder" src="{{band.pic}}" width="150" height="100" data-vid='{{band.video}}'/>
+
+        <p>{{band.name}}</p>
+      </a>
+
+      {% endfor %}
+    </ul>
+  </body>
+</html>

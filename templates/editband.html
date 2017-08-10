@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit da Band</title>
+  </head>
+  <body>
+    <h1>Edit ma Band</h1>
+<form action="{{url_for('editBand', band_id=band_id, band=editedBand)}}" method="post">
+
+    <dl>
+      <dt>Name:</dt>
+        <dd><input type="text" size='30' name="name" placeholder="{{ band.name }}"></dd>
+      <dt>Bio:</dt>
+        <dd><textarea name="bio" rows="5" cols="40" placeholder="{{band.bio}}"></textarea></dd>
+      <dt>Type of Music:</dt>
+      {%if band.music == 'rock'%}
+        <dd><input type="radio" name="music" value="rock" checked>Rock</dd>
+      {%else%}
+        <dd><input type="radio" name="music" value="rock">Rock</dd>
+      {%endif%}
+      {%if band.music == 'pop'%}
+        <dd><input type="radio" name="music" value="pop" checked>Pop</dd>
+      {%else%}
+        <dd><input type="radio" name="music" value="pop">Pop</dd>
+      {%endif%}
+      {%if band.music == 'country'%}
+        <dd><input type="radio" name="music" value="country" checked>Country</dd>
+      {%else%}
+        <dd><input type="radio" name="music" value="country">Country</dd>
+      {%endif%}
+
+      <dt>Video Link:</dt>
+        <dd><textarea name="video" rows="1" cols="80" placeholder="{{band.video}}"></textarea></dd>
+
+      <dt>Pic Link:</dt>
+        <dd><textarea name="pic" rows="1" cols="80" placeholder="{{band.pic}}"></textarea></dd>
+
+      <dt>Track/spotify Link:</dt>
+        <dd><textarea name="track" rows="1" cols="80" placeholder="{{band.track}}"></textarea></dd>
+    </dl>
+    <input type="submit" value="Edit">
+
+    <a href="{{url_for('allBands',)}}">Cancel</a>
+  </form>
+
+  </body>
+</html>
