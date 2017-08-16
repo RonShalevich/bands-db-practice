@@ -18,6 +18,7 @@ class Band(Base):
     video = Column(String(250))
     pic = Column(String(250))
     track = Column(String(250))
+    album = Column(String(250))
     email = Column(String(80))
     website = Column(String(250))
     social = Column(String(250))
@@ -34,6 +35,7 @@ class Band(Base):
             'video': self.video,
             'pic': self.pic,
             'track': self.track,
+            'album': self.album,
             'email': self.email,
             'website': self.website,
             'social': self.social,

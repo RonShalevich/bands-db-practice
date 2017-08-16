@@ -5,6 +5,8 @@
     <title>Create a Band</title>
   </head>
   <body>
+    <a href="{{url_for('allBands', bands=bands)}}">Back to directory</a>
+
     <h1>New Band</h1>
     <form action="#" method="post">
 
@@ -18,11 +20,13 @@
         <dd><input type="radio" name="music" value="pop">Pop</dd>
         <dd><input type="radio" name="music" value="country">Country</dd>
       <dt>Cover Photo:</dt>
-        <dd><input type="file" size='30' name="pic"></dd>
+        <dd><input type="text" size='30' value="pic"></dd>
       <dt>Youtube video link:</dt>
         <dd><input type="text" size='30' name="video"></dd>
       <dt>Spotify track link:</dt>
         <dd><input type="text" size='30' name="track"></dd>
+      <dt>Spotify album itunes link:</dt>
+        <dd><input type="text" size='30' name="album"></dd>
       <dt>Website:</dt>
         <dd><input type="text" size='30' name="website"></dd>
       <dt>email:</dt>
